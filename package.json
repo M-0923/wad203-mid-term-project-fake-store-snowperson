@@ -11,6 +11,16 @@
     "preview": "vite preview",
     "front": "vite"
   },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "eslint"
+    ],
+    "**/*.{json,css,scss,html}": [
+      "prettier --write"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
