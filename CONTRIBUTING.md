@@ -73,6 +73,7 @@ If you are interested in the detailed specification you can visit:
 - [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
 
 ## Pull Requests
+When merging pull requests into the `main` branch, we use the "squash and merge" strategy. This approach combines all commits from the branch into a single commit in the `main` branch, ensuring our commit history remains clean and easy to follow.
 
 ### For Team Members:
 
