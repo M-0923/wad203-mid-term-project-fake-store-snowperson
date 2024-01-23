@@ -2,12 +2,14 @@
   "name": "wad-203-mid-term-fake-store",
   "version": "1.0.0",
   "description": "## Description",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "compile:css": "sass -w src/sass:src/css",
-    "html": "live-server src --verbose",
     "server": "json-server -w server/db.json --port=8000",
-    "dev": "concurrently 'npm run server' 'npm run compile:css' 'npm run html'"
+    "dev": "concurrently 'npm run server' 'vite'",
+    "build": "vite build",
+    "preview": "vite preview",
+    "front": "vite"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +18,7 @@
     "@types/jquery": "^3.5.29",
     "concurrently": "^8.2.2",
     "json-server": "^1.0.0-alpha.21",
-    "live-server": "^1.2.2",
-    "sass": "^1.70.0"
+    "sass": "^1.70.0",
+    "vite": "^5.0.8"
   }
 }

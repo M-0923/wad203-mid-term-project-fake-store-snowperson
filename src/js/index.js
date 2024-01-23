@@ -1,3 +1,4 @@
+import "/sass/index.scss";
 import { App } from "./App.js";
 
 $(() => {
