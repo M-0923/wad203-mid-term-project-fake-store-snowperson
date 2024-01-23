@@ -1,0 +1,12 @@
+# Dependency directories
+node_modules
+
+# Logs
+logs
+*.log
+
+# IDE settings
+.idea
+
+# Ignore certain config files
+.env
