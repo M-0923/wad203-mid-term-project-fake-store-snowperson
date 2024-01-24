@@ -47,6 +47,9 @@ export default class App {
    * @returns {ProductManager}
    */
   getProductManager() {
+    if (!this.#productManager) {
+      throw new Error("ProductManager is not set.");
+    }
     return this.#productManager;
   }
 
@@ -55,6 +58,9 @@ export default class App {
    * @returns
    */
   getCartManager() {
+    if (!this.#cartManager) {
+      throw new Error("CartManager is not set.");
+    }
     return this.#cartManager;
   }
 
