@@ -19,10 +19,10 @@ export default class Renderer {
   }
 
   /**
-   * Renders the data with template, which is defined in this method in subclass, and appends it to the #container.
-   * This method must be implemented by subclass!
+   * If it's initial, renders the data with template, which is defined in this method in subclass, and appends it to the #container.
+   * If it's not initial, updates the DOM element with the giving properties.
    * @abstract
-   * @param {Object | number} data
+   * @param data
    * @returns void
    *
    * @example
