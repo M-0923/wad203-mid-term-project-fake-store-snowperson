@@ -15,7 +15,7 @@ export default class App {
   #cartManager;
 
   /**
-   * Creates an instance of Shop.
+   * Creates an instance of App.
    */
   constructor() {
     if (App.#instance) {
@@ -25,7 +25,7 @@ export default class App {
   }
 
   /**
-   * Return the instance of Shop.
+   * Return the instance of App.
    * Would recommend to use this method to get the instance of App class.
    * @returns {App}
    *
