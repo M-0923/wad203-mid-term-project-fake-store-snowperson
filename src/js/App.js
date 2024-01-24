@@ -25,8 +25,15 @@ export default class App {
   }
 
   /**
-   * Return the instance of Shop
+   * Return the instance of Shop.
+   * Would recommend to use this method to get the instance of App class.
    * @returns {App}
+   *
+   * @example
+   * const app = App.getInstance();
+   * const productManager = app.getProductManager();
+   * const productA = productManager.getProductByID("A");
+   * console.log(productA.getTitle()); // This will print the title of productA
    */
   static getInstance() {
     if (!App.#instance) {
