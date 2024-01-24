@@ -1,6 +1,6 @@
 export class ProductManager {
   /**
-   * @type {object[ ]} #productList
+   * @type {Product[]} #productList
    */
   #productList;
 
@@ -9,11 +9,32 @@ export class ProductManager {
   }
 
   /**
-   *
-   * @param {object} product
+   * Push the product to #productList
+   * @param {Product} product
    */
   addProduct(product) {
     this.#productList.push(product);
-    console.log(this.#productList);
+  }
+
+  /**
+   * Return #productList
+   * @returns {Product[]} #productList
+   */
+  getProductList() {
+    return this.#productList;
+  }
+
+  /**
+   * Get a product by id
+   * @param {string} id
+   * @returns {(Product|null)}
+   */
+  getProductByID(id) {
+    const matchedProduct = this.#productList.find((product) => {
+      const productId = product.getId();
+      return productId === id;
+    });
+
+    return matchedProduct !== undefined ? matchedProduct : null;
   }
 }

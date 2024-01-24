@@ -1,15 +1,23 @@
 export class Product {
   /**
-   * @type {number} #id
-   * @type {string} #title
-   * @type {number} #price
-   * @type {string} #desc
-   * @type {string} #img
+   * @type {string} #id
    */
   #id;
+  /**
+   * @type {string} #title
+   */
   #title;
+  /**
+   * @type {string} #price
+   */
   #price;
+  /**
+   * @type {string} #desc
+   */
   #desc;
+  /**
+   * @type {string} #img
+   */
   #img;
 
   constructor(id, title, price, desc, img) {
@@ -18,5 +26,45 @@ export class Product {
     this.#price = price;
     this.#desc = desc;
     this.#img = img;
+  }
+
+  /**
+   * Return #id
+   * @returns {string} #id
+   */
+  getId() {
+    return this.#id;
+  }
+
+  /**
+   * Return #title
+   * @returns {string} #title
+   */
+  getTitle() {
+    return this.#title;
+  }
+
+  /**
+   * Return #price
+   * @returns {string} #price
+   */
+  getPrice() {
+    return this.#price;
+  }
+
+  /**
+   * Return #desc
+   * @returns {string} #desc
+   */
+  getDescription() {
+    return this.#desc;
+  }
+
+  /**
+   * Return #img
+   * @returns {string} #img
+   */
+  getImage() {
+    return this.#img;
   }
 }

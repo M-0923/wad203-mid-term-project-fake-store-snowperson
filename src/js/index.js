@@ -9,8 +9,8 @@ $(() => {
   new App(app);
 
   /**
-   *
-   * @return {object[]} productData
+   * Return the data from API server
+   * @returns {Promise<Object[]>} productData
    */
   const fetchData = async () => {
     try {
@@ -21,7 +21,6 @@ $(() => {
         );
       }
       const productData = await response.json();
-      console.log(productData);
       return productData;
     } catch (error) {
       console.error("Error fetching product data.", error.message);
@@ -30,10 +29,12 @@ $(() => {
   };
 
   const productManager = new ProductManager();
+
+  /**
+   * Push the data from API server to array of ProductManager class
+   */
   fetchData().then((data) => {
-    // console.log(data);
-    data.map((productData) => {
-      // console.log(productData);
+    data.forEach((productData) => {
       const product = new Product(
         productData.id,
         productData.title,
@@ -43,6 +44,5 @@ $(() => {
       );
       productManager.addProduct(product);
     });
-    console.log(productManager);
   });
 });
