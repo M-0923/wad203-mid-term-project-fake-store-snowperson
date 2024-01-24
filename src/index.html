@@ -8,7 +8,38 @@
   </head>
   <body>
     <div id="app"></div>
+    <template id="product-template">
+      <li class="product">
+        <div class="product__img">
+          <img src="" />
+        </div>
+        <div class="product__contents">
+          <div class="product__details">
+            <h4></h4>
+            <p></p>
+            <p class="product__price"></p>
+          </div>
+          <button id="quick-add-button" class="button">Quick Add</button>
+        </div>
+      </li>
+    </template>
 
+    <template id="cart-template">
+      <li class="cart-item">
+        <div class="cart-item__img">
+          <img src="" />
+        </div>
+        <div class="cart-item__contents">
+          <h4></h4>
+          <div class="cart-item__details">
+            <p class="cart-item__price"></p>
+            <p class="cart-item__quantity"></p>
+            <p class="cart-item__price"></p>
+          </div>
+          <button id="remove-button" class="button">Remove</button>
+        </div>
+      </li>
+    </template>
     <script type="module" src="js/index.js" defer></script>
   </body>
 </html>
