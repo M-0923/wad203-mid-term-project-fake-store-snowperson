@@ -1,6 +1,6 @@
 export default class App {
   /**
-   * @type {Shop}
+   * @type {App}
    */
   static #instance = null;
 
