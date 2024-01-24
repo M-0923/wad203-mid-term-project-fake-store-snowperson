@@ -21,7 +21,7 @@ export default class App {
     if (App.#instance) {
       return App.#instance;
     }
-    App.INSTANCE = this;
+    App.#instance = this;
   }
 
   /**
