@@ -26,9 +26,12 @@ export default class App {
 
   /**
    * Return the instance of Shop
-   * @returns {Shop}
+   * @returns {App}
    */
   static getInstance() {
+    if (!App.#instance) {
+      App.#instance = new App();
+    }
     return App.#instance;
   }
 
