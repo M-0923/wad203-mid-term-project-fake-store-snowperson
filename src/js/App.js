@@ -1,4 +1,6 @@
 export default class App {
+  static test = "test";
+
   /**
    * @type {App}
    */
@@ -37,7 +39,7 @@ export default class App {
    */
   static getInstance() {
     if (!App.#instance) {
-      App.#instance = new App();
+      throw new Error("App is not initialized.");
     }
     return App.#instance;
   }
