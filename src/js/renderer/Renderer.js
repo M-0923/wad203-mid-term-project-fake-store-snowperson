@@ -51,4 +51,50 @@ export default class Renderer {
   getContainer() {
     return this.#container;
   }
+
+  /**
+   * Returns a list of keys for propertyMap that have changed.
+   * @abstract
+   * @param {Object<string, Object<string, string | function>>} propertyMap
+   * @param {HTMLElement} existingContainer
+   * @returns {string[]}
+   */
+  // eslint-disable-next-line
+  #hasChanged(propertyMap, existingContainer) {
+    throw new Error("Must be implemented by subclass!");
+  }
+
+  /**
+   * Creates a DOM element for the data.
+   * @abstract
+   * @param data
+   * @returns {HTMLElement}
+   */
+  // eslint-disable-next-line
+  #createElement(data) {
+    throw new Error("Must be implemented by subclass!");
+  }
+
+  /**
+   * Updates the DOM element with the giving properties.
+   * @abstract
+   * @param {HTMLElement} existingContainer
+   * @param {Object<string, string | function>} properties
+   * @returns void
+   */
+  // eslint-disable-next-line
+  #updateDOM(existingContainer, properties) {
+    throw new Error("Must be implemented by subclass!");
+  }
+
+  /**
+   * Returns the property map that consists of selector, property, format, and text (
+   * @abstract
+   * @param data
+   * @returns {Object<string, Object<string, string | number | function>>}
+   */
+  // eslint-disable-next-line
+  #generatePropertyMap(data) {
+    throw new Error("Must be implemented by subclass!");
+  }
 }
