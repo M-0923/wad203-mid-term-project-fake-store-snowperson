@@ -7,7 +7,31 @@
     <title>Fake Store</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <header class="header">
+        <h1>Fake Store</h1>
+      </header>
+      <main>
+        <div class="shop">
+          <h1>Shopping</h1>
+          <ul class="products"></ul>
+        </div>
+        <div class="cart">
+          <h1>Cart</h1>
+
+          <div class="cart__summary">
+            <h2>Summary</h2>
+
+            <div class="cart__total-price">
+              <h3>Total Price:</h3>
+              <h3 id="total-price">$0</h3>
+            </div>
+          </div>
+          <ul class="cart-items"></ul>
+        </div>
+      </main>
+    </div>
+
     <template id="product-template">
       <li class="product">
         <div class="product__img">
