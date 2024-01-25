@@ -1,3 +1,4 @@
+import App from "../App";
 export class Cart {
   /**
    * @type {string} #productId
@@ -33,11 +34,32 @@ export class Cart {
     return this.#quantity;
   }
 
+  /**
+   * Return the increased #quantity
+   * @returns {number} #quantity
+   */
   increaseQuantity() {
-    return this.#quantity++;
+    this.#quantity++;
   }
 
+  /**
+   * Return the decreased #quantity
+   * @returns {number} #quantity
+   */
   decreaseQuantity() {
-    return this.#quantity--;
+    this.#quantity--;
+  }
+
+  /**
+   * Return the product of quantity and the price of the associated product
+   * @returns {number} Sum of price and quantity
+   */
+  getSubtotalPrice() {
+    const productPrice = App.getInstance()
+      .getProductManager()
+      .getProductByID(this.#productId)
+      .getPrice();
+
+    return this.#quantity * productPrice;
   }
 }

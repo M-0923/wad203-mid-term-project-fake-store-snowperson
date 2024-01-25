@@ -1,4 +1,5 @@
 import App from "../App";
+import { Cart } from "./Cart";
 export class CartManger {
   /**
    * @type {Cart[]} #productId
@@ -11,17 +12,16 @@ export class CartManger {
 
   /**
    * Push Cart to #cartList or increase the number of #quantity
-   * @param {Cart} cart
+   * @param {string} productId
    */
-  addCart(cart) {
-    const isCartItemInCart = this.#cartList.some((cartItem) => {
-      return cartItem.getProductId() == cart.getProductId();
-    });
+  addCart(productId) {
+    const cartItemInCart = this.getCartByProductId(productId);
 
-    if (!isCartItemInCart) {
+    if (!cartItemInCart) {
+      const cart = new Cart(productId);
       this.#cartList.push(cart);
     } else {
-      cart.increaseQuantity();
+      cartItemInCart.increaseQuantity();
     }
   }
 
@@ -30,9 +30,7 @@ export class CartManger {
    * @param {string} productId
    */
   removeCart(productId) {
-    const removedCartItem = this.#cartList.find((cartItem) => {
-      return cartItem.getProductId() === productId;
-    });
+    const removedCartItem = this.getCartByProductId(productId);
 
     if (removedCartItem.getQuantity() > 1) {
       removedCartItem.decreaseQuantity();
@@ -56,47 +54,34 @@ export class CartManger {
   }
 
   /**
-   *
-   * @param {string} productId
-   * @returns {number} Sum of price and quantity
-   */
-  getSubtotalPrice(productId) {
-    const app = App.getInstance();
-    const productManager = app.getProductManager();
-    const product = productManager.getProductByID(productId);
-    const productPrice = product.getPrice();
-
-    const itemInCart = this.#cartList.find((cartItem) => {
-      return cartItem.getProductId() === productId;
-    });
-
-    const productQty = itemInCart.getQuantity();
-
-    return productPrice * productQty;
-  }
-
-  /**
-   *
+   * Return the sum of the prices multiplied by quantities for all items in the cart
    * @returns {number} Sum of price and quantity for all items
    */
   getTotalPrice() {
-    const app = App.getInstance();
-    const productManager = app.getProductManager();
-    const productList = productManager.getProductList();
+    const productManager = App.getInstance().getProductManager();
 
     const totalPrice = this.#cartList.reduce((total, cartItem) => {
       const productId = cartItem.getProductId();
       const productQty = cartItem.getQuantity();
-
-      const matchedItem = productList.find((product) => {
-        return product.getId() === productId;
-      });
-
+      const matchedItem = productManager.getProductByID(productId);
       const productPrice = matchedItem.getPrice();
 
       return (total += productPrice * productQty);
     }, 0);
 
     return totalPrice;
+  }
+
+  /**
+   * Return a cart item in #cartList or null if not found
+   * @param {string} productId
+   * @returns {(Product|null)}
+   */
+  getCartByProductId(productId) {
+    const cartItemInCart = this.#cartList.find((cartItem) => {
+      return cartItem.getProductId() == productId;
+    });
+
+    return cartItemInCart !== undefined ? cartItemInCart : null;
   }
 }
