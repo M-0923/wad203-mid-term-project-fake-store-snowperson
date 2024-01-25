@@ -2,6 +2,8 @@ import "/sass/index.scss";
 import App from "./App.js";
 import { ProductManager } from "./components/ProductManager.js";
 import { Product } from "./components/Product.js";
+import { CartManger } from "./components/CartManger.js";
+
 import $ from "jquery";
 
 $(() => {
@@ -14,7 +16,9 @@ $(() => {
   app.setProductManager(productManager);
 
   // instantiate the CartManager class
+  const cartManager = new CartManger();
   // set the instance of CartManager to App class
+  app.setCartManager(cartManager);
 
   /**
    * Return the data from API server
