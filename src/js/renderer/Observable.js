@@ -20,7 +20,7 @@ export default class Observable {
    * @param {function} callback
    */
   // eslint-disable-next-line
-  subscribe(callback) {
+  addListener(callback) {
     this.#observers.push(callback);
   }
 
@@ -29,7 +29,7 @@ export default class Observable {
    * @param {function} callback
    */
   // eslint-disable-next-line
-  unsubscribe(callback) {
+  removeListener(callback) {
     this.#observers = this.#observers.filter((obs) => obs !== callback);
   }
 
