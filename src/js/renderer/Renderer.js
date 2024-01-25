@@ -54,14 +54,17 @@ export default class Renderer {
 
   /**
    * Returns a list of keys for propertyMap that have changed.
-   * @abstract
-   * @param {Object<string, Object<string, string | function>>} propertyMap
+   * @param {Object<string, Object<string, string | number | function>>} propertyMap
    * @param {HTMLElement} existingContainer
    * @returns {string[]}
    */
-  // eslint-disable-next-line
-  #hasChanged(propertyMap, existingContainer) {
-    throw new Error("Must be implemented by subclass!");
+  hasChanged(propertyMap, existingContainer) {
+    return Object.keys(propertyMap).filter((prop) => {
+      const { selector, property, format, text } = propertyMap[prop];
+      const productValue = format ? format(text) : text;
+      const existingValue = existingContainer.querySelector(selector)[property];
+      return existingValue !== productValue;
+    });
   }
 
   /**
