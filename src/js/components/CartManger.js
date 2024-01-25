@@ -1,3 +1,4 @@
+import App from "../App";
 export class CartManger {
   #cartList;
 
@@ -58,7 +59,21 @@ export class CartManger {
     return this.#cartList;
   }
 
-  getTotalPrice() {}
+  getSubtotalPrice(productId) {
+    const app = App.getInstance();
+    const productManager = app.getProductManager();
+    const product = productManager.getProductByID(productId);
+    // console.log(product);
+    const productPrice = product.getPrice();
+    // console.log('price', price);
+    const itemInCart = this.#cartList.find((cartItem) => {
+      return cartItem.getProductId() === productId;
+    });
+    console.log("itemInCart", itemInCart);
+    const productQty = itemInCart.getQuantity();
+    // console.log('productQty', productQty);
+    return productQty * productPrice;
+  }
 
-  getSubtotalPrice() {}
+  getTotalPrice() {}
 }
