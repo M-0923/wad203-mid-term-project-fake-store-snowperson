@@ -30,12 +30,12 @@ export default class ProductRenderer extends Renderer {
 
     if (existingProductContainer) {
       const propertyMap = this.#generatePropertyMap(product);
-      const changes = this.#hasChanged(propertyMap, existingProductContainer);
+      const changes = this.hasChanged(propertyMap, existingProductContainer);
 
       if (changes.length === 0) return;
 
       changes.forEach((key) =>
-        this.#updateDOM(existingProductContainer, propertyMap[key]),
+        this.updateDOM(existingProductContainer, propertyMap[key]),
       );
     } else {
       const productElement = this.#createElement(product);
@@ -62,37 +62,6 @@ export default class ProductRenderer extends Renderer {
     });
 
     return productElement;
-  }
-
-  /**
-   * Returns a list of keys for propertyMap that have changed.
-   * @param {Object<string, Object<string, string | number | function>>} propertyMap
-   * @param {HTMLElement} existingProductContainer
-   * @returns {string[]}
-   */
-  #hasChanged(propertyMap, existingProductContainer) {
-    return Object.keys(propertyMap).filter((prop) => {
-      const { selector, property, format, text } = propertyMap[prop];
-      const productValue = format ? format(text) : text;
-      const existingValue =
-        existingProductContainer.querySelector(selector)[property];
-      return existingValue !== productValue;
-    });
-  }
-
-  /**
-   * Updates the DOM element with the giving properties.
-   * @param {HTMLElement} existingContainer
-   * @param {Object<string, string | number | function>} properties
-   */
-  #updateDOM(existingContainer, properties) {
-    const { selector, property, format, text } = properties;
-
-    console.log("Updating,..", selector, property, format, text);
-
-    existingContainer.querySelector(selector)[property] = format
-      ? format(text)
-      : text;
   }
 
   /**
