@@ -80,7 +80,6 @@ export default class Renderer {
 
   /**
    * Updates the DOM element with the giving properties.
-   * @abstract
    * @param {HTMLElement} existingContainer
    * @param {Object<string, string | number | function>} properties
    */
@@ -104,7 +103,6 @@ export default class Renderer {
 
   /**
    * Removes the element from the DOM.
-   * @abstract
    * @param {HTMLElement} existingContainer
    * @param {Object<string, string | number | function>} properties
    */
