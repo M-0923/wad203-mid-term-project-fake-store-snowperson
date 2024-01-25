@@ -54,7 +54,7 @@ export default class App {
   }
 
   /**
-   * Return the instance of Cart
+   * Return the instance of CartManager
    * @returns
    */
   getCartManager() {
@@ -73,7 +73,7 @@ export default class App {
   }
 
   /**
-   * Set the instance of Cart
+   * Set the instance of CartManager
    * @param cartManager
    */
   setCartManager(cartManager) {
