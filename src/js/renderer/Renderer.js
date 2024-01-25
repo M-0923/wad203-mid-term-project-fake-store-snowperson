@@ -109,7 +109,8 @@ export default class Renderer {
    * @param {Object<string, string | number | function>} properties
    */
   // eslint-disable-next-line
-  #deleteElement(existingContainer, properties) {
-    throw new Error("Must be implemented by subclass!");
+  deleteElement(existingContainer, properties) {
+    const { selector } = properties;
+    existingContainer.querySelector(selector).remove();
   }
 }
