@@ -97,4 +97,15 @@ export default class Renderer {
   #generatePropertyMap(data) {
     throw new Error("Must be implemented by subclass!");
   }
+
+  /**
+   * Removes the element from the DOM.
+   * @abstract
+   * @param {HTMLElement} existingContainer
+   * @param {Object<string, string | number | function>} properties
+   */
+  // eslint-disable-next-line
+  #deleteElement(existingContainer, properties) {
+    throw new Error("Must be implemented by subclass!");
+  }
 }
