@@ -1,6 +1,4 @@
 export default class App {
-  static test = "test";
-
   /**
    * @type {App}
    */
