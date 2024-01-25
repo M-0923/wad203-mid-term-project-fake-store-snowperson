@@ -1,12 +1,20 @@
 import "/sass/index.scss";
-import { App } from "./App.js";
+import App from "./App.js";
 import { ProductManager } from "./components/ProductManager.js";
 import { Product } from "./components/Product.js";
 import $ from "jquery";
 
 $(() => {
-  const app = $("#app");
-  new App(app);
+  // instantiate the App class
+  const app = new App();
+
+  // instantiate the ProductManager class
+  const productManager = new ProductManager();
+  // set the instance of ProductManager to App class
+  app.setProductManager(productManager);
+
+  // instantiate the CartManager class
+  // set the instance of CartManager to App class
 
   /**
    * Return the data from API server
@@ -27,8 +35,6 @@ $(() => {
       throw error;
     }
   };
-
-  const productManager = new ProductManager();
 
   /**
    * Push the data from API server to array of ProductManager class
