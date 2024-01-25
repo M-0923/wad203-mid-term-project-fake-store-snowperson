@@ -1,5 +1,8 @@
 import App from "../App";
 export class CartManger {
+  /**
+   * @type {Cart[]} #productId
+   */
   #cartList;
 
   constructor() {
@@ -20,25 +23,19 @@ export class CartManger {
     } else {
       cart.increaseQuantity();
     }
-    // console.log(this.#cartList);
   }
 
   /**
-   * Remove Cart from #cartList
+   * Remove Cart from #cartList or decrease number of quantity of cartItem
    * @param {string} productId
    */
   removeCart(productId) {
     const removedCartItem = this.#cartList.find((cartItem) => {
       return cartItem.getProductId() === productId;
     });
-    // console.log(this.getCartList());
-
-    // console.log('removedCartItem', removedCartItem);
-    // console.log('qty:', removedCartItem.getQuantity());
 
     if (removedCartItem.getQuantity() > 1) {
       removedCartItem.decreaseQuantity();
-      // console.log(this.getCartList());
       return;
     }
 
@@ -48,7 +45,6 @@ export class CartManger {
     });
 
     this.#cartList = removedArray;
-    // console.log(this.getCartList());
   }
 
   /**
@@ -59,21 +55,48 @@ export class CartManger {
     return this.#cartList;
   }
 
+  /**
+   *
+   * @param {string} productId
+   * @returns {number} Sum of price and quantity
+   */
   getSubtotalPrice(productId) {
     const app = App.getInstance();
     const productManager = app.getProductManager();
     const product = productManager.getProductByID(productId);
-    // console.log(product);
     const productPrice = product.getPrice();
-    // console.log('price', price);
+
     const itemInCart = this.#cartList.find((cartItem) => {
       return cartItem.getProductId() === productId;
     });
-    console.log("itemInCart", itemInCart);
+
     const productQty = itemInCart.getQuantity();
-    // console.log('productQty', productQty);
-    return productQty * productPrice;
+
+    return productPrice * productQty;
   }
 
-  getTotalPrice() {}
+  /**
+   *
+   * @returns {number} Sum of price and quantity for all items
+   */
+  getTotalPrice() {
+    const app = App.getInstance();
+    const productManager = app.getProductManager();
+    const productList = productManager.getProductList();
+
+    const totalPrice = this.#cartList.reduce((total, cartItem) => {
+      const productId = cartItem.getProductId();
+      const productQty = cartItem.getQuantity();
+
+      const matchedItem = productList.find((product) => {
+        return product.getId() === productId;
+      });
+
+      const productPrice = matchedItem.getPrice();
+
+      return (total += productPrice * productQty);
+    }, 0);
+
+    return totalPrice;
+  }
 }

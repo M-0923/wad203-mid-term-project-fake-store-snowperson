@@ -4,7 +4,7 @@ export class Cart {
    */
   #productId;
   /**
-   * @type {string} #quantity
+   * @type {number} #quantity
    */
   #quantity;
 
@@ -27,7 +27,7 @@ export class Cart {
 
   /**
    * Return #quantity
-   * @returns {string} #quantity
+   * @returns {number}
    */
   getQuantity() {
     return this.#quantity;
