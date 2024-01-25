@@ -82,12 +82,13 @@ export default class Renderer {
    * Updates the DOM element with the giving properties.
    * @abstract
    * @param {HTMLElement} existingContainer
-   * @param {Object<string, string | function>} properties
-   * @returns void
+   * @param {Object<string, string | number | function>} properties
    */
-  // eslint-disable-next-line
-  #updateDOM(existingContainer, properties) {
-    throw new Error("Must be implemented by subclass!");
+  updateDOM(existingContainer, properties) {
+    const { selector, property, format, text } = properties;
+    existingContainer.querySelector(selector)[property] = format
+      ? format(text)
+      : text;
   }
 
   /**
