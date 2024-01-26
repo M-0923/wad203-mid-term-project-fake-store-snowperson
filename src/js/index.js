@@ -4,7 +4,7 @@ import { ProductManager } from "./components/ProductManager.js";
 import { Product } from "./components/Product.js";
 import $ from "jquery";
 
-$(() => {
+$(async () => {
   // instantiate the App class
   const app = new App();
 
@@ -53,5 +53,5 @@ $(() => {
     });
   };
 
-  storeData();
+  await storeData();
 });
