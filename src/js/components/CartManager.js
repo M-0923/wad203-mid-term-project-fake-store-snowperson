@@ -36,17 +36,18 @@ export class CartManager extends Observable {
   removeCart(productId) {
     const removedCartItem = this.getCartByProductId(productId);
 
-    if (removedCartItem.getQuantity() > 1) {
-      removedCartItem.decreaseQuantity();
-      return;
+    removedCartItem.decreaseQuantity();
+
+    if (removedCartItem.getQuantity() === 0) {
+      const removedArray = this.#cartList.filter((cartItem) => {
+        const cartProductId = cartItem.getProductId();
+        return cartProductId !== productId;
+      });
+
+      this.#cartList = removedArray;
     }
 
-    const removedArray = this.#cartList.filter((cartItem) => {
-      const cartProductId = cartItem.getProductId();
-      return cartProductId !== productId;
-    });
-
-    this.#cartList = removedArray;
+    this.notify(removedCartItem);
   }
 
   /**
