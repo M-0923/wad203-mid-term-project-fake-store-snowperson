@@ -104,11 +104,9 @@ export default class Renderer {
   /**
    * Removes the element from the DOM.
    * @param {HTMLElement} existingContainer
-   * @param {Object<string, string | number | function>} properties
    */
   // eslint-disable-next-line
-  deleteElement(existingContainer, properties) {
-    const { selector } = properties;
-    existingContainer.querySelector(selector).remove();
+  deleteElement(existingContainer) {
+    existingContainer.remove();
   }
 }
