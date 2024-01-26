@@ -84,3 +84,28 @@ $(async () => {
 
   await storeData();
 });
+
+$(document).on("click", function (event) {
+  // Check if the clicked element is a button with the id of "quick-add-button" or "remove-button"
+  if (
+    event.target.id !== "quick-add-button" &&
+    event.target.id !== "remove-button"
+  )
+    return;
+
+  // Get the closest element with the data-id attribute
+  const closestElement = event.target.closest("[data-id]");
+  // Get the data-id attribute value
+  const productId = closestElement.dataset.id;
+  // Get the CartManager instance from App class
+  const cartManager = App.getInstance().getCartManager();
+
+  // Remove the product from the cart
+  if (event.target.id === "remove-button") {
+    cartManager.removeCart(productId);
+    return;
+  }
+
+  // Add the product to the cart
+  cartManager.addCart(productId);
+});
