@@ -1,9 +1,9 @@
 import App from "../App";
-import { Cart } from "./Cart";
+import { CartItem } from "./CartItem";
 import Observable from "../renderer/Observable.js";
-export class CartManager extends Observable {
+export class CartManager {
   /**
-   * @type {Cart[]} #productId
+   * @type {CartItem[]} #productId
    */
   #cartList;
 
@@ -13,14 +13,14 @@ export class CartManager extends Observable {
   }
 
   /**
-   * Push Cart to #cartList or increase the number of #quantity
+   * Push CartItem to #cartList or increase the number of #quantity
    * @param {string} productId
    */
   addCart(productId) {
     let cart = this.getCartByProductId(productId);
 
     if (!cart) {
-      cart = new Cart(productId);
+      cart = new CartItem(productId);
       this.#cartList.push(cart);
     } else {
       cart.increaseQuantity();
@@ -30,7 +30,7 @@ export class CartManager extends Observable {
   }
 
   /**
-   * Remove Cart from #cartList or decrease number of quantity of cartItem
+   * Remove CartItem from #cartList or decrease number of quantity of cartItem
    * @param {string} productId
    */
   removeCart(productId) {
@@ -52,14 +52,14 @@ export class CartManager extends Observable {
 
   /**
    * Return #cartList
-   * @returns {Cart[]} #cartList
+   * @returns {CartItem[]} #cartList
    */
   getCartList() {
     return this.#cartList;
   }
 
   /**
-   * Return the sum of the prices multiplied by quantities for all items in the cart
+   * Return the sum of the prices multiplied by quantities for all items in the cartItem
    * @returns {number} Sum of price and quantity for all items
    */
   getTotalPrice() {
@@ -78,9 +78,9 @@ export class CartManager extends Observable {
   }
 
   /**
-   * Return a cart item in #cartList or null if not found
+   * Return a CartItem in #cartList or null if not found
    * @param {string} productId
-   * @returns {(Product|null)}
+   * @returns {(CartItem|null)}
    */
   getCartByProductId(productId) {
     const cartItemInCart = this.#cartList.find((cartItem) => {
