@@ -17,14 +17,16 @@ export class CartManager extends Observable {
    * @param {string} productId
    */
   addCart(productId) {
-    const cartItemInCart = this.getCartByProductId(productId);
+    let cart = this.getCartByProductId(productId);
 
-    if (!cartItemInCart) {
-      const cart = new Cart(productId);
+    if (!cart) {
+      cart = new Cart(productId);
       this.#cartList.push(cart);
     } else {
-      cartItemInCart.increaseQuantity();
+      cart.increaseQuantity();
     }
+
+    this.notify(cart);
   }
 
   /**
