@@ -73,9 +73,9 @@ export class CartManager {
   }
 
   /**
-   * Return a CartItem item in #cartList or null if not found
+   * Return a CartItem in #cartList or null if not found
    * @param {string} productId
-   * @returns {(Product|null)}
+   * @returns {(CartItem|null)}
    */
   getCartByProductId(productId) {
     const cartItemInCart = this.#cartList.find((cartItem) => {
