@@ -1,8 +1,8 @@
 import App from "../App";
-import { Cart } from "./Cart";
+import { CartItem } from "./CartItem";
 export class CartManager {
   /**
-   * @type {Cart[]} #productId
+   * @type {CartItem[]} #productId
    */
   #cartList;
 
@@ -11,22 +11,22 @@ export class CartManager {
   }
 
   /**
-   * Push Cart to #cartList or increase the number of #quantity
+   * Push CartItem to #cartList or increase the number of #quantity
    * @param {string} productId
    */
   addCart(productId) {
     const cartItemInCart = this.getCartByProductId(productId);
 
     if (!cartItemInCart) {
-      const cart = new Cart(productId);
-      this.#cartList.push(cart);
+      const cartItem = new CartItem(productId);
+      this.#cartList.push(cartItem);
     } else {
       cartItemInCart.increaseQuantity();
     }
   }
 
   /**
-   * Remove Cart from #cartList or decrease number of quantity of cartItem
+   * Remove CartItem from #cartList or decrease number of quantity of cartItem
    * @param {string} productId
    */
   removeCart(productId) {
@@ -47,14 +47,14 @@ export class CartManager {
 
   /**
    * Return #cartList
-   * @returns {Cart[]} #cartList
+   * @returns {CartItem[]} #cartList
    */
   getCartList() {
     return this.#cartList;
   }
 
   /**
-   * Return the sum of the prices multiplied by quantities for all items in the cart
+   * Return the sum of the prices multiplied by quantities for all items in the cartItem
    * @returns {number} Sum of price and quantity for all items
    */
   getTotalPrice() {
@@ -73,7 +73,7 @@ export class CartManager {
   }
 
   /**
-   * Return a cart item in #cartList or null if not found
+   * Return a CartItem item in #cartList or null if not found
    * @param {string} productId
    * @returns {(Product|null)}
    */
