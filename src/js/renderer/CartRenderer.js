@@ -82,6 +82,11 @@ export default class CartRenderer extends Renderer {
       .getProductManager()
       .getProductByID(cart.getProductId());
     return {
+      title: {
+        selector: "h4",
+        property: "textContent",
+        text: product.getTitle(),
+      },
       price: {
         selector: ".cart-item__price",
         property: "textContent",
