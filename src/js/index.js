@@ -7,7 +7,7 @@ import { CartManager } from "./components/CartManager.js";
 import $ from "jquery";
 import ProductRenderer from "./renderer/ProductRenderer.js";
 
-$(() => {
+$(async () => {
   // instantiate the App class
   const app = new App();
 
@@ -51,7 +51,8 @@ $(() => {
   /**
    * Push the data from API server to array of ProductManager class
    */
-  fetchData().then((data) => {
+  const storeData = async () => {
+    const data = await fetchData();
     data.forEach((productData) => {
       const product = new Product(
         productData.id,
@@ -62,5 +63,7 @@ $(() => {
       );
       productManager.addProduct(product);
     });
-  });
+  };
+
+  await storeData();
 });
