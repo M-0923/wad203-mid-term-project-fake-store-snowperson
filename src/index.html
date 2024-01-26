@@ -7,8 +7,65 @@
     <title>Fake Store</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <header class="header">
+        <h1>Fake Store</h1>
+      </header>
+      <main>
+        <div class="shop">
+          <h1>Shopping</h1>
+          <ul class="products"></ul>
+        </div>
+        <div class="cart">
+          <h1>Cart</h1>
 
+          <div class="cart__summary">
+            <h2>Summary</h2>
+
+            <div class="cart__total-price">
+              <h3>Total Price:</h3>
+              <h3 id="total-price">$0</h3>
+            </div>
+          </div>
+          <ul class="cart-items">
+            <li id="cart-empty">🛒 Empty Cart 🛒</li>
+          </ul>
+        </div>
+      </main>
+    </div>
+
+    <template id="product-template">
+      <li class="product">
+        <div class="product__img">
+          <img src="" />
+        </div>
+        <div class="product__contents">
+          <div class="product__details">
+            <h4></h4>
+            <p></p>
+            <p class="product__price"></p>
+          </div>
+          <button id="quick-add-button" class="button">Quick Add</button>
+        </div>
+      </li>
+    </template>
+
+    <template id="cart-template">
+      <li class="cart-item">
+        <div class="cart-item__img">
+          <img src="" />
+        </div>
+        <div class="cart-item__contents">
+          <h4></h4>
+          <div class="cart-item__details">
+            <p class="cart-item__price"></p>
+            <p class="cart-item__quantity"></p>
+            <p class="cart-item__price-subtotal"></p>
+          </div>
+          <button id="remove-button" class="button">Remove</button>
+        </div>
+      </li>
+    </template>
     <script type="module" src="js/index.js" defer></script>
   </body>
 </html>

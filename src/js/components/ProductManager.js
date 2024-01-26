@@ -1,10 +1,13 @@
-export class ProductManager {
+import Observable from "../renderer/Observable.js";
+
+export class ProductManager extends Observable {
   /**
    * @type {Product[]} #productList
    */
   #productList;
 
   constructor() {
+    super();
     this.#productList = [];
   }
 
@@ -14,6 +17,7 @@ export class ProductManager {
    */
   addProduct(product) {
     this.#productList.push(product);
+    this.notify(product);
   }
 
   /**

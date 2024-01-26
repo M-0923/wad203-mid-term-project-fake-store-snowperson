@@ -1,5 +1,6 @@
 import App from "../App";
 import { CartItem } from "./CartItem";
+import Observable from "../renderer/Observable.js";
 export class CartManager {
   /**
    * @type {CartItem[]} #productId
@@ -7,6 +8,7 @@ export class CartManager {
   #cartList;
 
   constructor() {
+    super();
     this.#cartList = [];
   }
 
@@ -15,14 +17,16 @@ export class CartManager {
    * @param {string} productId
    */
   addCart(productId) {
-    const cartItemInCart = this.getCartByProductId(productId);
+    let cart = this.getCartByProductId(productId);
 
-    if (!cartItemInCart) {
-      const cartItem = new CartItem(productId);
-      this.#cartList.push(cartItem);
+    if (!cart) {
+      cart = new CartItem(productId);
+      this.#cartList.push(cart);
     } else {
-      cartItemInCart.increaseQuantity();
+      cart.increaseQuantity();
     }
+
+    this.notify(cart);
   }
 
   /**
@@ -32,17 +36,18 @@ export class CartManager {
   removeCart(productId) {
     const removedCartItem = this.getCartByProductId(productId);
 
-    if (removedCartItem.getQuantity() > 1) {
-      removedCartItem.decreaseQuantity();
-      return;
+    removedCartItem.decreaseQuantity();
+
+    if (removedCartItem.getQuantity() === 0) {
+      const removedArray = this.#cartList.filter((cartItem) => {
+        const cartProductId = cartItem.getProductId();
+        return cartProductId !== productId;
+      });
+
+      this.#cartList = removedArray;
     }
 
-    const removedArray = this.#cartList.filter((cartItem) => {
-      const cartProductId = cartItem.getProductId();
-      return cartProductId !== productId;
-    });
-
-    this.#cartList = removedArray;
+    this.notify(removedCartItem);
   }
 
   /**
