@@ -6,6 +6,8 @@ import { CartManager } from "./components/CartManager.js";
 
 import $ from "jquery";
 import ProductRenderer from "./renderer/ProductRenderer.js";
+import CartRenderer from "./renderer/CartRenderer.js";
+import CartTotalRenderer from "./renderer/CartTotalRenderer.js";
 
 $(async () => {
   // instantiate the App class
@@ -27,6 +29,21 @@ $(async () => {
   const cartManager = new CartManager();
   // set the instance of CartManager to App class
   app.setCartManager(cartManager);
+
+  // get the container to render the individual cart items
+  const cartContainer = document.querySelector(".cart-items");
+  // instantiate the CartRenderer class and pass the container
+  const cartRenderer = new CartRenderer(cartContainer);
+  // get the container to render the total price
+  const cartTotalContainer = document.querySelector(".cart__summary");
+  // instantiate the CartTotalRenderer class and pass the container
+  const cartTotalRenderer = new CartTotalRenderer(cartTotalContainer);
+
+  // add a listener that will render the cart items and update the total price when the cartManager notifies
+  cartManager.addListener((data) => {
+    cartRenderer.render(data);
+    cartTotalRenderer.render(cartManager.getTotalPrice());
+  });
 
   /**
    * Return the data from API server
