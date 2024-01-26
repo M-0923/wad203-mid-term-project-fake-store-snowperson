@@ -39,7 +39,8 @@ $(() => {
   /**
    * Push the data from API server to array of ProductManager class
    */
-  fetchData().then((data) => {
+  const storeData = async () => {
+    const data = await fetchData();
     data.forEach((productData) => {
       const product = new Product(
         productData.id,
@@ -50,5 +51,7 @@ $(() => {
       );
       productManager.addProduct(product);
     });
-  });
+  };
+
+  storeData();
 });
