@@ -24,8 +24,6 @@ export default class CartRenderer extends Renderer {
       `[data-id="${cart.getProductId()}"]`,
     );
 
-    console.log("render called", cart.getQuantity());
-
     if (existingContainer) {
       const propertyMap = this.#generatePropertyMap(cart);
       const changes = this.hasChanged(propertyMap, existingContainer);
@@ -34,7 +32,6 @@ export default class CartRenderer extends Renderer {
       if (changes.length === 0) return;
 
       // Delete the element if quantity is 0
-      console.log("Quantity: ", cart.getQuantity());
       if (cart.getQuantity() === 0) {
         this.deleteElement(existingContainer);
       } else {
