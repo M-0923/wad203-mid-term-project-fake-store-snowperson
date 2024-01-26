@@ -1,6 +1,6 @@
 import App from "../App";
 import { Cart } from "./Cart";
-export class CartManger {
+export class CartManager {
   /**
    * @type {Cart[]} #productId
    */
