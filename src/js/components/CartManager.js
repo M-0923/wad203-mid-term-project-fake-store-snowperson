@@ -1,12 +1,14 @@
 import App from "../App";
 import { Cart } from "./Cart";
-export class CartManager {
+import Observable from "../renderer/Observable.js";
+export class CartManager extends Observable {
   /**
    * @type {Cart[]} #productId
    */
   #cartList;
 
   constructor() {
+    super();
     this.#cartList = [];
   }
 
