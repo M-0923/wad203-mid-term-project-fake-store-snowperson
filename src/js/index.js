@@ -1,8 +1,8 @@
 import "/sass/index.scss";
 import App from "./App.js";
-import { ProductManager } from "./components/ProductManager.js";
-import { Product } from "./components/Product.js";
-import { CartManager } from "./components/CartManager.js";
+import ProductManager from "./components/ProductManager.js";
+import Product from "./components/Product.js";
+import CartManager from "./components/CartManager.js";
 
 import $ from "jquery";
 import ProductRenderer from "./renderer/ProductRenderer.js";

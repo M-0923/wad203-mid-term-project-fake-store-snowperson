@@ -1,6 +1,6 @@
 import Observable from "../renderer/Observable.js";
 
-export class ProductManager extends Observable {
+export default class ProductManager extends Observable {
   /**
    * @type {Product[]} #productList
    */
