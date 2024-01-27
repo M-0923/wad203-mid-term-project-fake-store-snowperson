@@ -1,6 +1,6 @@
 # Contributing to the Project
 Thank you for your interest in contributing to the project! We welcome all contributions. Please read the following guidelines before making a contribution.
-_Note: This document is adapted from [a version](https://github.com/M-0923/wad202-final-project-nick/blob/main/CONTRIBUTING.md) originally created by [@uskayyyyy](https://github.com/uskayyyyy), with modifications to suit our project's needs. Thank you!_
+_Note: This document is adapted from [a version](https://github.com/M-0923/wad202-final-project-nick/blob/main/CONTRIBUTING.md) originally created by [@hitohata](https://github.com/hitohata) and  [@uskayyyyy](https://github.com/uskayyyyy), with modifications to suit our project's needs. Thank you to both!_
 
 ## Table of Contents
 
