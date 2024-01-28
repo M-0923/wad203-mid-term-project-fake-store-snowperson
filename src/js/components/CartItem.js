@@ -1,5 +1,5 @@
 import App from "../App";
-export class CartItem {
+export default class CartItem {
   /**
    * @type {string} #productId
    */
