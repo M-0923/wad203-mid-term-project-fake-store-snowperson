@@ -1,6 +1,6 @@
 import App from "../App";
-import CartItem from "./CartItem";
-import Observable from "../renderer/Observable.js";
+import CartItem from "../models/CartItem.js";
+import Observable from "../observable/Observable.js";
 export default class CartManager extends Observable {
   /**
    * @type {CartItem[]} #productId
