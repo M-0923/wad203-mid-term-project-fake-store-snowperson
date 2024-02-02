@@ -1,13 +1,13 @@
 import "/sass/index.scss";
 import App from "./App.js";
-import ProductManager from "./components/ProductManager.js";
-import Product from "./components/Product.js";
-import CartManager from "./components/CartManager.js";
+import ProductManager from "./managers/ProductManager.js";
+import Product from "./models/Product.js";
+import CartManager from "./managers/CartManager.js";
 
 import $ from "jquery";
-import ProductRenderer from "./renderer/ProductRenderer.js";
-import CartRenderer from "./renderer/CartRenderer.js";
-import CartTotalRenderer from "./renderer/CartTotalRenderer.js";
+import ProductRenderer from "./renderers/ProductRenderer.js";
+import CartRenderer from "./renderers/CartRenderer.js";
+import CartTotalRenderer from "./renderers/CartTotalRenderer.js";
 
 $(async () => {
   // instantiate the App class

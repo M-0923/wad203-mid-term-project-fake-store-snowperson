@@ -1,4 +1,4 @@
-import Observable from "../renderer/Observable.js";
+import Observable from "../observable/Observable.js";
 
 export default class ProductManager extends Observable {
   /**

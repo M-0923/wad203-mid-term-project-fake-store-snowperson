@@ -1,4 +1,4 @@
-import Renderer from "./Renderer.js";
+import Renderer from "./abstract/Renderer.js";
 import App from "../App.js";
 
 export default class CartRenderer extends Renderer {
